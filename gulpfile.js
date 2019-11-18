@@ -32,24 +32,15 @@ function js() {
     .pipe(livereload());
 }
 
-// exports.default = parallel(html, css, js);
-
-const watcher = watch(['src/*.html', 'src/sass/*.scss', 'src/js/*.js']);
-
 exports.default = function() {
   livereload.listen();
   connect.server({
     root: 'dist',  // 访问的目录
     livereload: true,
-    host: '192.168.0.123', // 宿舍ip地址
+    host: '192.168.30.76', // ip地址
     port: 5000,
   });
   watch(['src/*.html', 'src/sass/*.scss', 'src/js/*.js'], parallel(html, css, js));
 
-  open('192.168.0.123:5000');
-  
-  // watcher.on(
-  //   'change', 
-  //   parallel(html, css, js)
-  // );
+  open('192.168.30.76:5000');
 };
